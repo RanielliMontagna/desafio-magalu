@@ -13,7 +13,7 @@ model User {
   name          String?
   password_hash String
 
-  createdAt DateTime @default(now())
+  created_at DateTime @default(now())
 
   @@map("users")
 }
@@ -24,7 +24,7 @@ model Cep {
   cidade String
   estado String
 
-  createdAt DateTime @default(now())
+  created_at DateTime @default(now())
 
   @@map("ceps")
 }
