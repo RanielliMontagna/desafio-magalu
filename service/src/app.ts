@@ -1,17 +1,27 @@
 import fastify from 'fastify'
 import cors from '@fastify/cors'
+import fastifyJwt from '@fastify/jwt'
 
 import { ZodError } from 'zod'
 
 import { env } from '@/env'
 
 import { publicRoutes } from '@/http/controllers/public/routes'
+import { cepRoutes } from '@/http/controllers/cep/routes'
 
 export const app = fastify({})
 
 app.register(cors, { origin: ['http://localhost:5173'] })
 
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+  sign: {
+    expiresIn: '7d',
+  },
+})
+
 app.register(publicRoutes)
+app.register(cepRoutes)
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {

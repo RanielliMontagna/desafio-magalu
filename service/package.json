@@ -18,7 +18,8 @@
     "test:install-prisma-environment": "npm link vitest-environment-prisma",
     "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
     "test:e2e": "vitest run --dir src/http",
-    "test:e2e:watch": "vitest --dir src/http"
+    "test:e2e:watch": "vitest --dir src/http",
+    "prisma:migrate": "npx prisma migrate dev"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
@@ -28,6 +29,7 @@
   "license": "ISC",
   "dependencies": {
     "@fastify/cors": "^8.3.0",
+    "@fastify/jwt": "^7.2.0",
     "@prisma/client": "^5.0.0",
     "axios": "^1.4.0",
     "bcryptjs": "2.4.3",

@@ -4,6 +4,21 @@ import { createHashPassword } from '../src/utils/http/create-hash-password'
 
 const prisma = new PrismaClient()
 
+const ceps = [
+  {
+    cep: '95360000',
+    rua: null,
+    cidade: 'Paraí',
+    estado: 'RS',
+  },
+  {
+    cep: '99150000',
+    rua: null,
+    cidade: 'Marau',
+    estado: 'RS',
+  },
+]
+
 async function main() {
   const alice = await prisma.user.upsert({
     where: { email: 'alice@prisma.io' },
@@ -24,7 +39,13 @@ async function main() {
     },
   })
 
+  const dataCeps = await prisma.cep.createMany({
+    data: ceps,
+    skipDuplicates: true,
+  })
+
   console.log({ alice, bob })
+  console.log(`Created ${dataCeps.count} new ceps`)
 }
 main()
   .then(async () => {
