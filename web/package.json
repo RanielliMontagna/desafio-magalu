@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@mantine/core": "^6.0.19",
     "@mantine/form": "^6.0.19",
+    "@mantine/hooks": "^6.0.19",
     "@mantine/notifications": "^6.0.19",
     "@sentry/vite-plugin": "^2.7.0",
     "@tabler/icons-react": "^2.32.0",
