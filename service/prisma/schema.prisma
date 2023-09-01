@@ -8,9 +8,9 @@ datasource db {
 }
 
 model User {
-  id            String  @id @default(uuid())
-  email         String  @unique
-  name          String?
+  id            String @id @default(uuid())
+  email         String @unique
+  name          String
   password_hash String
 
   created_at DateTime @default(now())
@@ -19,8 +19,8 @@ model User {
 }
 
 model Cep {
-  cep    String @unique
-  rua    String
+  cep    String  @unique
+  rua    String?
   cidade String
   estado String
 

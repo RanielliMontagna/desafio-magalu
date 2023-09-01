@@ -28,8 +28,6 @@ describe('Authenticate Use Case', () => {
       password: 'a1s2d3',
     })
 
-    console.log(user)
-
     expect(user).toEqual(
       expect.objectContaining({
         id: expect.any(String),
