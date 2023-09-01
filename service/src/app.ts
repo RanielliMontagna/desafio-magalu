@@ -2,6 +2,9 @@ import fastify from 'fastify'
 import cors from '@fastify/cors'
 import fastifyJwt from '@fastify/jwt'
 
+import * as Sentry from '@sentry/node'
+import { ProfilingIntegration } from '@sentry/profiling-node'
+
 import { ZodError } from 'zod'
 
 import { env } from '@/env'
@@ -10,6 +13,14 @@ import { publicRoutes } from '@/http/controllers/public/routes'
 import { cepRoutes } from '@/http/controllers/cep/routes'
 
 export const app = fastify({})
+
+Sentry.init({
+  dsn: env.SENTRY_DSN,
+  integrations: [new ProfilingIntegration()],
+
+  tracesSampleRate: 0.1,
+  profilesSampleRate: 0.1,
+})
 
 app.register(cors, {
   origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
@@ -35,7 +46,7 @@ app.setErrorHandler((error, _, reply) => {
   if (env.NODE_ENV !== 'production') {
     console.error(error)
   } else {
-    // TODO: Here we should log to a external tool like DataDog/NewRelic/Sentry
+    Sentry.captureException(error)
   }
 
   return reply.status(500).send({

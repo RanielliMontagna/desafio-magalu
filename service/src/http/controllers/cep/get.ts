@@ -6,7 +6,10 @@ import { CepNotFoundError } from '@/use-cases/errors/cep-not-found-error'
 
 export async function getCep(request: FastifyRequest, reply: FastifyReply) {
   const getCepQuerySchema = z.object({
-    cep: z.string().max(8, { message: 'CEP inválido' }),
+    cep: z
+      .string()
+      .length(8, 'CEP must have 8 digits')
+      .regex(/^\d+$/, 'CEP must contain only digits'),
   })
 
   const { cep } = getCepQuerySchema.parse(request.params)

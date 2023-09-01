@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "0447a6db-d39a-434b-a9d8-87114d58648d",
+		"name": "Teste Técnico Magalu - Serviço de CEP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21757044",
+		"_collection_link": "https://lunar-comet-383278.postman.co/workspace/Projects~21258913-4f9f-423e-a2a9-fb2d3fdd28da/collection/21757044-0447a6db-d39a-434b-a9d8-87114d58648d?action=share&source=collection_link&creator=21757044"
+	},
+	"item": [
+		{
+			"name": "Get Cep",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const token = pm.variables.get(\"token\");\r",
+							"const api = pm.variables.get(\"apiUrl\");\r",
+							"\r",
+							"const _email = 'bob@prisma.io';\r",
+							"const _password = 'a1s2d3';\r",
+							"\r",
+							"if(!token) {\r",
+							"    const postRequest = {\r",
+							"        url: api + '/authenticate',\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/json',\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify({ \r",
+							"                email: _email,\r",
+							"                password: _password,\r",
+							"            })\r",
+							"        }\r",
+							"    };\r",
+							"\r",
+							"    pm.sendRequest(postRequest, (_, response) => {\r",
+							"        pm.environment.set(\"token\", response.json().token);\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}/cep/95360000",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"cep",
+						"95360000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}",
+					"host": [
+						"{{apiUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"bob@prisma.io\",\r\n    \"password\": \"a1s2d3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/authenticate",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiUrl",
+			"value": "http://localhost:3333",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
