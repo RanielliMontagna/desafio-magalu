@@ -10,10 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mantine/core": "^6.0.19",
+    "@mantine/form": "^6.0.19",
+    "@mantine/notifications": "^6.0.19",
+    "@tabler/icons-react": "^2.32.0",
+    "axios": "^1.5.0",
+    "dayjs": "^1.11.9",
+    "js-cookie": "^3.0.5",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.15.0",
+    "vite-tsconfig-paths": "^4.2.0",
+    "zod": "^3.22.2",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.3",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
