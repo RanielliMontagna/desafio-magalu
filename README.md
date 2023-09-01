@@ -36,10 +36,11 @@ A arquitetura do projeto é baseada nos conceitos de **DDD** (Domain Driven Desi
 
 ## 🛣️ Rotas
 
-| Método  | Rota          | Descrição               |
-| ------- | ------------- | ----------------------- |
-| POST 📤 | /authenticate | Autenticação do usuário |
-| GET 📥  | /cep/:cep     | Consulta de CEP         |
+| Método  | Rota          | Descrição               | Autenticação |
+| ------- | ------------- | ----------------------- | ------------ |
+| POST 📤 | /authenticate | Autenticação do usuário | 🔓 Público   |
+| GET 📥  | /check        | Health check            | 🔓 Público   |
+| GET 📥  | /cep/:cep     | Consulta de CEP         | 🔒 Privado   |
 
 ## 🚀 Como executar o projeto
 

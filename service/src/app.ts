@@ -8,11 +8,14 @@ import { ProfilingIntegration } from '@sentry/profiling-node'
 import { ZodError } from 'zod'
 
 import { env } from '@/env'
-
 import { publicRoutes } from '@/http/controllers/public/routes'
 import { cepRoutes } from '@/http/controllers/cep/routes'
 
+import { swaggerGenerator } from './lib/swagger'
+
 export const app = fastify({})
+
+swaggerGenerator(app)
 
 Sentry.init({
   dsn: env.SENTRY_DSN,

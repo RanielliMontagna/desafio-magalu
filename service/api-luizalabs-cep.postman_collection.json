@@ -78,9 +78,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{apiUrl}}",
+					"raw": "{{apiUrl}}/check",
 					"host": [
 						"{{apiUrl}}"
+					],
+					"path": [
+						"check"
 					]
 				}
 			},
