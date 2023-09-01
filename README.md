@@ -31,6 +31,15 @@ A arquitetura do projeto é baseada nos conceitos de **DDD** (Domain Driven Desi
 - [Zod](https://zod.dev/) - Biblioteca para validação de dados
 - [Docker](https://www.docker.com/) - Plataforma para criação de ambientes isolados
 - [Prisma](https://www.prisma.io/) - ORM para Node.js e TypeScript
+- [JWT](https://jwt.io/) - Geração e validação de tokens de autenticação
+- [Postman](https://www.postman.com/) - Ferramenta para testar APIs
+
+## 🛣️ Rotas
+
+| Método  | Rota          | Descrição               |
+| ------- | ------------- | ----------------------- |
+| POST 📤 | /authenticate | Autenticação do usuário |
+| GET 📥  | /cep/:cep     | Consulta de CEP         |
 
 ## 🚀 Como executar o projeto
 
@@ -80,4 +89,22 @@ $ npm run dev
 
 Pronto, o servidor está rodando em http://localhost:3333 ou na porta que você definiu no arquivo .env.
 
-# 🚧 Em desenvolvimento
+## 🧪 Testes
+
+### ⚗️ Testes unitários
+
+Para executar os testes unitários, execute o seguinte comando:
+
+```bash
+# Execute os testes unitários
+$ npm run test
+```
+
+caso queira executar os testes com o coverage, execute o seguinte comando:
+
+```bash
+# Execute os testes unitários com o coverage
+$ npm run test:coverage
+```
+
+#### 🖊️ Autor - [@raniellimontagna](https://www.github.com/raniellimontagna)
