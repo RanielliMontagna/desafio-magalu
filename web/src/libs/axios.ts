@@ -2,11 +2,11 @@ import axios from 'axios'
 import { getCookie } from 'helpers/cookies'
 
 const axiosPublicInstance = axios.create({
-  baseURL: 'http://localhost:3333',
+  baseURL: import.meta.env.VITE_API_URL,
 })
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3333',
+  baseURL: import.meta.env.VITE_API_URL,
 })
 
 axiosInstance.interceptors.request.use(
