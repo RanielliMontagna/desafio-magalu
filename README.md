@@ -1,9 +1,5 @@
 <div align="center" style={{ marginTop: 16 }}>
-  <img
-    src="./web/public/luizalabs-logo.png"
-    height={80}
-    style={{ marginRight: 16 }}
-  />
+  <img src="./web/public/luizalabs-logo.png" height="80px" />
   <h2 style={{ margin: 0 }} align="center">
     Desafio Técnico - Consulta de CEP
   </h2>
@@ -25,5 +21,63 @@ A linguagem escolhida para o desenvolvimento do projeto foi o **JavaScript**, ma
 ### 🎨 Arquitetura
 
 A arquitetura do projeto é baseada nos conceitos de **DDD** (Domain Driven Design), **SOLID** e **Clean Architecture**. A escolha se deu por ser uma arquitetura que permite a criação de aplicações escaláveis, de fácil manutenção e que permite a criação de testes automatizados. Além disso, a arquitetura permite a criação de aplicações com baixo acoplamento e alta coesão.
+
+## ⚡ Tecnologias
+
+- [Node.js](https://nodejs.org/en/) - Interpretador de JavaScript para o backend
+- [Express](https://expressjs.com/pt-br/) - Framework para criação de aplicações web com Node.js
+- [TypeScript](https://www.typescriptlang.org/) - Superset de JavaScript que permite a tipagem de dados
+- [Vitest](https://vitejs.dev/guide/) - Ferramenta de teste para aplicações JavaScript
+- [Zod](https://zod.dev/) - Biblioteca para validação de dados
+- [Docker](https://www.docker.com/) - Plataforma para criação de ambientes isolados
+- [Prisma](https://www.prisma.io/) - ORM para Node.js e TypeScript
+
+## 🚀 Como executar o projeto
+
+### 📦 Pré-requisitos
+
+Para executar o projeto é necessário ter instalado o [Node.js](https://nodejs.org/en/) e o [Docker](https://www.docker.com/).
+
+### 📂 Clonando o repositório
+
+```bash
+# Clone o repositório
+$ git clone
+
+# Acesse a pasta do projeto
+$ cd luizalabs-cep/service
+```
+
+### 🐳 Iniciando o banco de dados
+
+```bash
+# Inicie o banco de dados
+$ docker-compose up -d
+```
+
+### 📦 Instalando as dependências
+
+```bash
+# Instale as dependências
+$ npm install
+```
+
+### 📚 Preparando o banco de dados
+
+```bash
+# Execute as migrations
+$ npm run prisma:migrate
+
+# Esse comando irá criar as tabelas e popular o banco de dados com os dados do arquivo ./service/prisma/seed.ts
+```
+
+### 🚀 Iniciando o servidor
+
+```bash
+# Inicie o servidor
+$ npm run dev
+```
+
+Pronto, o servidor está rodando em http://localhost:3333 ou na porta que você definiu no arquivo .env.
 
 # 🚧 Em desenvolvimento
