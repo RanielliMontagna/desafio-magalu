@@ -22,6 +22,23 @@ A linguagem escolhida para o desenvolvimento do projeto foi o **JavaScript**, ma
 
 A arquitetura do projeto é baseada nos conceitos de **DDD** (Domain Driven Design), **SOLID** e **Clean Architecture**. A escolha se deu por ser uma arquitetura que permite a criação de aplicações escaláveis, de fácil manutenção e que permite a criação de testes automatizados. Além disso, a arquitetura permite a criação de aplicações com baixo acoplamento e alta coesão.
 
+## ☁️ Deploy
+
+O projeto foi hospedado na plataforma [Render](https://render.com/), que permite o deploy de aplicações de forma simples e rápida. Para acessar o projeto, acesse os links:
+
+- [x] [API](https://desafio-tecnico-luizalabs-api.onrender.com) - API para consulta de CEP
+- [x] [Web](https://desafio-tecnico-luizalabs-web.onrender.com) - Aplicação web que consome a APIs
+
+```
+⚠️ A API está hospedada em um plano gratuito, portanto, pode demorar a responder na primeira requisição.
+```
+
+## 📚 Documentação
+
+A documentação da API foi feita utilizando o [Swagger](https://swagger.io/), que é uma ferramenta que permite a criação de documentações para APIs de forma simples e rápida. Para acessar a documentação, acesse o link:
+
+- [x] [Documentação](https://desafio-tecnico-luizalabs-api.onrender.com/docs)
+
 ## ⚡ Tecnologias
 
 - [Node.js](https://nodejs.org/en/) - Interpretador de JavaScript para o backend
@@ -55,7 +72,7 @@ Para executar o projeto é necessário ter instalado o [Node.js](https://nodejs.
 $ git clone
 
 # Acesse a pasta do projeto
-$ cd luizalabs-cep/service
+$ cd desafio-luizalabs/service
 ```
 
 ### 🐳 Iniciando o banco de dados
@@ -106,6 +123,15 @@ caso queira executar os testes com o coverage, execute o seguinte comando:
 ```bash
 # Execute os testes unitários com o coverage
 $ npm run test:coverage
+```
+
+### 🧪 Testes e2e
+
+Para executar os testes e2e, execute o seguinte comando:
+
+```bash
+# Execute os testes e2e
+$ npm run test:e2e
 ```
 
 #### 🖊️ Autor - [@raniellimontagna](https://www.github.com/raniellimontagna)
