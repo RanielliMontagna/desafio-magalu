@@ -29,7 +29,17 @@ export class GetCepUseCase {
       throw new UserNotFoundError()
     }
 
-    const data = await this.cepRepository.findByCep(cep)
+    let data: Cep | null = null
+
+    for (let i = cep.length - 1; i >= 1; i--) {
+      const newCep = cep.slice(0, i) + '0'.repeat(cep.length - i)
+
+      data = await this.cepRepository.findByCep(newCep)
+
+      if (data) {
+        break
+      }
+    }
 
     if (!data) {
       throw new CepNotFoundError()

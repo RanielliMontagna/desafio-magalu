@@ -5,6 +5,7 @@ import { GetCepUseCase } from './get-cep'
 import { createHashPassword } from '@/utils/http/create-hash-password'
 import { randomUUID } from 'crypto'
 import { CepNotFoundError } from '../errors/cep-not-found-error'
+import { UserNotFoundError } from '../errors/user-not-found-error'
 
 let cepRepository: InMemoryCepRepository
 let userRepository: InMemoryUserRepository
@@ -50,6 +51,30 @@ describe('Get Cep Use Case', () => {
     )
   })
 
+  it('should be able to get a cep replacing the last digits with 0', async () => {
+    const dadosParai = {
+      cep: '95360000',
+      cidade: 'Paraí',
+      estado: 'RS',
+    }
+
+    await cepRepository.create(dadosParai)
+
+    const cep = await sut.execute({
+      cep: '95361111',
+      userId: idUser,
+    })
+
+    expect(cep).toEqual(
+      expect.objectContaining({
+        cep: '95360000',
+        cidade: 'Paraí',
+        estado: 'RS',
+        rua: null,
+      }),
+    )
+  })
+
   it('should not be able to get a cep with invalid cep', async () => {
     await expect(
       sut.execute({
@@ -65,6 +90,6 @@ describe('Get Cep Use Case', () => {
         cep: '95360000',
         userId: randomUUID(),
       }),
-    ).rejects.toBeInstanceOf(CepNotFoundError)
+    ).rejects.toBeInstanceOf(UserNotFoundError)
   })
 })
