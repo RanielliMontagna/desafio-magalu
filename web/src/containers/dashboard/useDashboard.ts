@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import { useForm } from '@mantine/form'
-import { notifications } from '@mantine/notifications'
 
 import type { Cep } from 'api/cep/cep.types'
 
@@ -10,20 +9,19 @@ import { useAppStore } from 'store/app/app'
 import { useAuthStore } from 'store/auth/auth'
 
 export function useDashboard() {
-  const { setLoading } = useAppStore()
+  const { setLoading, handleError } = useAppStore()
   const { clearStore } = useAuthStore()
 
   const [dadosCep, setDadosCep] = useState<Cep | null>(null)
 
   const form = useForm({
-    initialValues: {
-      cep: '',
-    },
+    initialValues: { cep: '' },
 
     validate: {
       cep: (value) => {
         if (!value) return 'Campo obrigatório'
         if (value.length != 8) return 'CEP inválido'
+        if (isNaN(Number(value))) return 'CEP deve conter apenas números'
 
         return null
       },
@@ -41,14 +39,8 @@ export function useDashboard() {
       if (data) {
         setDadosCep(data)
       }
-    } catch (err: any) {
-      const message = err.response?.data?.message
-
-      notifications.show({
-        title: 'Ocorreu um erro ao buscar o CEP',
-        message: message,
-        color: 'red',
-      })
+    } catch (err) {
+      handleError(err)
     } finally {
       setLoading(false)
     }
@@ -60,6 +52,7 @@ export function useDashboard() {
 
   function handleClearCep() {
     setDadosCep(null)
+    form.setFieldValue('cep', '')
   }
 
   return {

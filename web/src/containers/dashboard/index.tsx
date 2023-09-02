@@ -53,7 +53,8 @@ export default function Dashboard() {
           <DataContainer>
             <Title order={2}>Resultado da busca:</Title>
             <Text>
-              <strong>CEP:</strong> {dadosCep.cep}
+              <strong>CEP:</strong>{' '}
+              {`${dadosCep.cep.slice(0, 5)}-${dadosCep.cep.slice(5)}`}
             </Text>
             <Text>
               <strong>Cidade:</strong> {dadosCep.cidade}

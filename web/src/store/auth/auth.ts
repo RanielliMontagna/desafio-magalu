@@ -8,7 +8,6 @@ import { setLocal } from 'helpers/localStorage'
 import { queryClient } from 'libs/react-query'
 
 import type { AuthState, AuthStore, UserTokenDecoded } from './types'
-import { notifications } from '@mantine/notifications'
 
 const tokenCookieName = 'token'
 
@@ -28,10 +27,9 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
       setLocal('email', email)
       get().setToken(data.token)
     } catch (err) {
-      notifications.show({
+      useAppStore.getState().handleError({
         title: 'Erro ao fazer login',
         message: 'Verifique suas credenciais e tente novamente',
-        color: 'red',
       })
     } finally {
       useAppStore.getState().setLoading(false)
@@ -43,7 +41,7 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
       deleteCookie(tokenCookieName)
       set({ token: null, user: null })
     } catch (err) {
-      console.error(err)
+      window.location.reload()
     }
   },
   setToken: (token) => {

@@ -12,4 +12,5 @@ export interface ErrorBackendResponse {
 export interface AppStore extends AppState {
   setLoading: (loading: Loading) => void
   clearStore: () => void
+  handleError: (error: unknown | ErrorBackendResponse) => void
 }

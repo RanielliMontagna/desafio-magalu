@@ -8,8 +8,8 @@ export async function getCep(request: FastifyRequest, reply: FastifyReply) {
   const getCepQuerySchema = z.object({
     cep: z
       .string()
-      .length(8, 'CEP must have 8 digits')
-      .regex(/^\d+$/, 'CEP must contain only digits'),
+      .length(8, 'CEP deve conter 8 dígitos')
+      .regex(/^\d+$/, 'CEP deve conter apenas números'),
   })
 
   const { cep } = getCepQuerySchema.parse(request.params)

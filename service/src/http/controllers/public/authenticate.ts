@@ -9,8 +9,8 @@ export async function authenticate(
   reply: FastifyReply,
 ) {
   const authenticateBodySchema = z.object({
-    email: z.string().email(),
-    password: z.string(),
+    email: z.string().email('Email inválido'),
+    password: z.string().min(3, 'Senha deve conter no mínimo 3 caracteres'),
   })
 
   const { email, password } = authenticateBodySchema.parse(request.body)
