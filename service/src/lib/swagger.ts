@@ -16,6 +16,10 @@ export function swaggerGenerator(app: FastifyInstance) {
           url: 'http://localhost:5173',
           description: 'Local server',
         },
+        {
+          url: "https://desafio-tecnico-luizalabs-api.onrender.com",
+          description: 'Production server',
+        }
       ],
       components: {
         securitySchemes: {

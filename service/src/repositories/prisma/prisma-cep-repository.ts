@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma'
 
 import { CepRepository } from '../cep-repository'
 import { Prisma } from '@prisma/client'
+import { viaCepInstance } from '@/lib/axios'
 
 export class PrismaCepRepository implements CepRepository {
   async findByCep(cep: string) {
@@ -10,6 +11,14 @@ export class PrismaCepRepository implements CepRepository {
     })
 
     return data
+  }
+
+  async findByCepExternal(cep: string) {
+    const data = await viaCepInstance.get(`${cep}/json`)
+
+    if (data.status === 200) {
+      return data.data
+    }
   }
 
   async create(cep: Prisma.CepUncheckedCreateInput) {

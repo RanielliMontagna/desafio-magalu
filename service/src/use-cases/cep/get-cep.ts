@@ -38,6 +38,21 @@ export class GetCepUseCase {
 
       if (data) {
         break
+      } else {
+        const dataExternal = await this.cepRepository.findByCepExternal(newCep)
+
+        if (dataExternal?.cep) {
+          data = await this.cepRepository.create({
+            cep: dataExternal.cep.replace('-', ''),
+            cidade: dataExternal.localidade,
+            estado: dataExternal.uf,
+            rua: dataExternal.logradouro,
+          })
+        }
+      }
+
+      if (data) {
+        break
       }
     }
 

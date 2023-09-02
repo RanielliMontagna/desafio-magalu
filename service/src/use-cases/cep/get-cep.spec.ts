@@ -51,6 +51,22 @@ describe('Get Cep Use Case', () => {
     )
   })
 
+  it('should be able to get a cep in external api', async () => {
+    const cep = await sut.execute({
+      cep: '91420270',
+      userId: idUser,
+    })
+
+    expect(cep).toEqual(
+      expect.objectContaining({
+        cep: '91420270',
+        cidade: 'Porto Alegre',
+        estado: 'RS',
+        rua: 'Rua São Domingos',
+      }),
+    )
+  })
+
   it('should be able to get a cep replacing the last digits with 0', async () => {
     const dadosParai = {
       cep: '95360000',
