@@ -6,6 +6,28 @@
   <p align="center" style={{ margin: 0 }}>
     Teste técnico para a vaga de desenvolvedor pleno na Luiza Labs
   </p>
+  <div style={{ marginTop: 16 }} align="center">
+    <img
+      src="https://img.shields.io/github/commit-activity/t/RanielliMontagna/desafio-luizalabs"
+      alt="Atividade do repositório"
+      style={{ marginRight: 8 }}
+    />
+    <img
+      src="https://img.shields.io/github/last-commit/RanielliMontagna/desafio-luizalabs?color=blue"
+      alt="Último commit"
+      style={{ marginRight: 8 }}
+    />
+    <img
+      src="https://img.shields.io/github/languages/top/RanielliMontagna/desafio-luizalabs?color=blue"
+      alt="Linguagem principal"
+      style={{ marginRight: 8 }}
+    />
+    <img
+      src="https://img.shields.io/github/repo-size/RanielliMontagna/desafio-luizalabs?color=blue"
+      alt="Tamanho do repositório"
+      style={{ marginRight: 8 }}
+    />
+  </div>
 </div>
 
 ## 🔗 Sumário
