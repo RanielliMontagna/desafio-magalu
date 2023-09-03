@@ -4,48 +4,28 @@ import { createHashPassword } from '../src/utils/http/create-hash-password'
 
 const prisma = new PrismaClient()
 
-const ceps = [
-  {
-    cep: '95360000',
-    rua: null,
-    cidade: 'Paraí',
-    estado: 'RS',
-  },
-  {
-    cep: '99150000',
-    rua: null,
-    cidade: 'Marau',
-    estado: 'RS',
-  },
+export const ceps = [
+  { cep: '95360000', rua: null, cidade: 'Paraí', estado: 'RS' },
+  { cep: '99150000', rua: null, cidade: 'Marau', estado: 'RS' },
+]
+
+export const users = [
+  { email: 'alice@prisma.io', name: 'Alice' },
+  { email: 'bob@prisma.io', name: 'Bob' },
 ]
 
 async function main() {
-  const alice = await prisma.user.upsert({
-    where: { email: 'alice@prisma.io' },
-    update: {},
-    create: {
-      email: 'alice@prisma.io',
-      name: 'Alice',
-      password_hash: await createHashPassword('a1s2d3'),
-    },
-  })
-  const bob = await prisma.user.upsert({
-    where: { email: 'bob@prisma.io' },
-    update: {},
-    create: {
-      email: 'bob@prisma.io',
-      name: 'Bob',
-      password_hash: await createHashPassword('a1s2d3'),
-    },
-  })
+  const hashPassword = await createHashPassword('a1s2d3')
 
-  const dataCeps = await prisma.cep.createMany({
-    data: ceps,
+  await prisma.user.createMany({
+    data: users.map((user) => ({ ...user, password_hash: hashPassword })),
     skipDuplicates: true,
   })
 
-  console.log({ alice, bob })
-  console.log(`Created ${dataCeps.count} new ceps`)
+  prisma.cep.createMany({
+    data: ceps,
+    skipDuplicates: true,
+  })
 }
 main()
   .then(async () => {
