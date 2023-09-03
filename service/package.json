@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "dev:docker": "npm run prisma:migrate && npm run prisma:seed && npm run dev",
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
     "prettier": "prettier --write .",
@@ -23,7 +24,9 @@
     "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
     "test:e2e": "vitest run --dir src/http",
     "test:e2e:watch": "vitest --dir src/http",
-    "prisma:migrate": "npx prisma migrate dev"
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "prisma db seed",
+    "prisma:generate": "prisma generate"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

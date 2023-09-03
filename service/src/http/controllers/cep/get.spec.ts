@@ -42,7 +42,7 @@ describe('Get CEP (e2e)', () => {
     const { token } = await authenticateUser(app)
 
     const response = await request(app.server)
-      .get('/cep/12345678')
+      .get('/cep/12121212')
       .set('Authorization', `Bearer ${token}`)
       .send()
 

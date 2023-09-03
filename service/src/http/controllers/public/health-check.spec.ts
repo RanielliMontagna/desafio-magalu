@@ -1,7 +1,7 @@
 import request from 'supertest'
 import { app } from '@/app'
 
-describe('Check (e2e)', () => {
+describe('Health Check (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
   })
@@ -11,7 +11,7 @@ describe('Check (e2e)', () => {
   })
 
   it('should be able to check if the server is running', async () => {
-    const response = await request(app.server).get('/check')
+    const response = await request(app.server).get('/health-check')
 
     expect(response.status).toEqual(200)
     expect(response.body).toEqual({

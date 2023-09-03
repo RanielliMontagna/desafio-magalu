@@ -60,13 +60,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{apiUrl}}/cep/95360000",
+					"raw": "{{apiUrl}}/cep/99990000",
 					"host": [
 						"{{apiUrl}}"
 					],
 					"path": [
 						"cep",
-						"95360000"
+						"99990000"
 					]
 				}
 			},
@@ -78,12 +78,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{apiUrl}}/check",
+					"raw": "{{apiUrl}}/health-check",
 					"host": [
 						"{{apiUrl}}"
 					],
 					"path": [
-						"check"
+						"health-check"
 					]
 				}
 			},

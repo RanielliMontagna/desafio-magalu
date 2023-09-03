@@ -1,11 +1,11 @@
 import { FastifyInstance } from 'fastify'
 
-import { check } from './check'
+import { check } from './health-check'
 import { authenticate } from './authenticate'
 
 export async function publicRoutes(app: FastifyInstance) {
   app.get(
-    '/check',
+    '/health-check',
     {
       schema: {
         tags: ['Public'],
