@@ -19,9 +19,12 @@
   - [📚 Documentação](#-documentação)
   - [⚡ Tecnologias usadas na API](#-tecnologias-usadas-na-api)
   - [🛣️ Rotas](#️-rotas)
-  - [🚀 Como executar o projeto](#-como-executar-o-projeto)
+  - [🚀 Como executar o projeto utilizando Docker](#-como-executar-o-projeto-utilizando-o-docker)
     - [📦 Pré-requisitos](#-pré-requisitos)
     - [📂 Clonando o repositório](#-clonando-o-repositório)
+    - [🐳 Container do serviço e api](#-serviço)
+    - [🌐 Aplicação web](#-web)
+  - [🚀 Como utilizar para desenvolvimento](#-como-utilizar-para-desenvolvimento)
     - [🐳 Iniciando o banco de dados](#-iniciando-o-banco-de-dados)
     - [📦 Instalando as dependências](#-instalando-as-dependências)
     - [📚 Preparando o banco de dados](#-preparando-o-banco-de-dados)
@@ -85,7 +88,7 @@ A documentação da API foi feita utilizando o [Swagger](https://swagger.io/), q
 | GET 📥  | /check        | Health check            | 🔓 Público   |
 | GET 📥  | /cep/:cep     | Consulta de CEP         | 🔒 Privado   |
 
-## <a id="-como-executar-o-projeto"></a> 🚀 Como executar o projeto
+## <a id="-como-executar-o-projeto-utilizando-o-docker"></a> 🚀 Como executar o projeto utilizando o Docker
 
 ### <a id="-pré-requisitos"></a> 📦 Pré-requisitos
 
@@ -98,8 +101,41 @@ Para executar o projeto é necessário ter instalado o [Node.js](https://nodejs.
 $ git clone
 
 # Acesse a pasta do projeto
-$ cd desafio-luizalabs/service
+$ cd desafio-tecnico-luizalabs
 ```
+
+### <a id="-serviço"></a> 🐳 Container do serviço e api
+
+```bash
+# Acesse a pasta do serviço
+$ cd service
+
+# Execute o comando do docker para criar o container
+$ docker-compose up -d
+```
+
+Depois de executar o comando, será criado um container com o banco de dados e outro com a API. Para verificar se os containers foram criados, execute o seguinte comando:
+
+```bash
+# Verifique se os containers foram criados
+$ docker ps
+```
+
+Pronto, o servidor está pronto para ser utilizado no endereço http://localhost:3333.
+
+### <a id="-web"></a> 🌐 Aplicação web
+
+```bash
+# Acesse a pasta da aplicação web
+$ cd web
+
+# Execute o comando do docker para criar o container
+$ docker-compose up -d
+```
+
+Pronto, a aplicação web está pronta para ser utilizada no endereço http://localhost:3000.
+
+## <a id="-como-utilizar-para-desenvolvimento"></a> 🚀 Como utilizar para desenvolvimento
 
 ### <a id="-iniciando-o-banco-de-dados"></a> 🐳 Iniciando o banco de dados
 
@@ -134,6 +170,10 @@ $ npm run dev
 Pronto, o servidor está rodando em http://localhost:3333 ou na porta que você definiu no arquivo .env.
 
 ## <a id="-testes"></a> 🧪 Testes
+
+```
+⚠️ Lembrando que para executar os testes, é necessário instalar as dependências do projeto. Para isso, execute o comando npm install na pasta do projeto.
+```
 
 ### <a id="️-testes-unitários"></a> ⚗️ Testes unitários
 
