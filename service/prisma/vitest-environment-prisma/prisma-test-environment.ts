@@ -3,8 +3,11 @@ import 'dotenv/config'
 import { randomUUID } from 'node:crypto'
 import { execSync } from 'node:child_process'
 
-import { Environment } from 'vitest'
 import { PrismaClient } from '@prisma/client'
+import { ceps, users } from 'prisma/seed'
+
+import { Environment } from 'vitest'
+import { createHashPassword } from '@/utils/http/create-hash-password'
 
 const prisma = new PrismaClient()
 
@@ -29,6 +32,18 @@ export default <Environment>{
     process.env.DATABASE_URL = databaseURL
 
     execSync('npx prisma migrate deploy')
+
+    const hashPassword = await createHashPassword('a1s2d3')
+
+    await prisma.user.createMany({
+      data: users.map((user) => ({ ...user, password_hash: hashPassword })),
+      skipDuplicates: true,
+    })
+
+    await prisma.cep.createMany({
+      data: ceps,
+      skipDuplicates: true,
+    })
 
     return {
       async teardown() {
