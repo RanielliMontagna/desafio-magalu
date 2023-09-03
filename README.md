@@ -107,7 +107,7 @@ A documentação da API foi feita utilizando o [Swagger](https://swagger.io/), q
 | Método  | Rota          | Descrição               | Autenticação |
 | ------- | ------------- | ----------------------- | ------------ |
 | POST 📤 | /authenticate | Autenticação do usuário | 🔓 Público   |
-| GET 📥  | /check        | Health check            | 🔓 Público   |
+| GET 📥  | /health-check | Health check            | 🔓 Público   |
 | GET 📥  | /cep/:cep     | Consulta de CEP         | 🔒 Privado   |
 
 ## <a id="-como-executar-o-projeto-utilizando-o-docker"></a> 🚀 Como executar o projeto utilizando o Docker
